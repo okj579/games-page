@@ -1,0 +1,15 @@
+diff --git a/colors.js b/colors.js
+index c6f914958841a8b9b1632e0b8c978cf2d4a445bc..e86e9752c2e1b2a6a489cfd6ead23d2f4aac7f1f 100644
+--- a/colors.js
++++ b/colors.js
+@@ -1,2 +1,10 @@
+ let colors = require('./lib/public/colors')
+ module.exports = (colors.__esModule ? colors : { default: colors }).default
++
++// https://github.com/tailwindlabs/tailwindcss/issues/4690
++// https://github.com/oven-sh/bun/issues/6747
++delete module.exports.lightBlue;
++delete module.exports.warmGray;
++delete module.exports.trueGray;
++delete module.exports.coolGray;
++delete module.exports.blueGray;
