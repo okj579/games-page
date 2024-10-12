@@ -15,8 +15,8 @@ const localeRoute = useLocaleRoute();
         <Image
           v-if="game.thumbnailImage"
           :src="game.thumbnailImage"
-          :width="200"
-          :height="200"
+          :width="160"
+          :height="160"
           class="w-full aspect-1 rounded-3xl"
           alt=""
         />
