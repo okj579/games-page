@@ -27,15 +27,21 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
       - name: Install Bun
         uses: oven-sh/setup-bun@v2
+
       - name: Restore package cache
         uses: actions/cache@v4
         with:
           path: ~/.bun/install/cache
           key: ${{ runner.os }}-bun-${{ hashFiles('**/bun.lockb') }}
 
-      - name: Setup Pages
+      - name: Configure Pages
         id: pages_setup
         uses: actions/configure-pages@v5
             
@@ -43,10 +49,10 @@ jobs:
         run: bun install
         
       - name: Generate static site
-        run: bunx --bun nuxt generate
+        run: bun run generate
         env:
           NODE_ENV: production
-          NUXT_PRESET: github_pages
+          NITRO_PRESET: github_pages
           NUXT_APP_BASE_URL: ${{ steps.pages_setup.outputs.base_path }}
       
       - name: Upload artifact
