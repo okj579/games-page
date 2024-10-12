@@ -47,7 +47,7 @@ jobs:
         env:
           NODE_ENV: production
           NUXT_PRESET: github_pages
-          NUXT_APP_BASE_URL: ${steps.pages_setup.outputs.base_path}
+          NUXT_APP_BASE_URL: ${{ steps.pages_setup.outputs.base_path }}
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
