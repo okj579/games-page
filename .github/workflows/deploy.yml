@@ -44,17 +44,17 @@ jobs:
       - name: Configure Pages
         id: pages_setup
         uses: actions/configure-pages@v5
-            
+
       - name: Install dependencies
         run: bun install
-        
+
       - name: Generate static site
         run: bun run generate
         env:
           NODE_ENV: production
           NITRO_PRESET: github_pages
           NUXT_APP_BASE_URL: ${{ steps.pages_setup.outputs.base_path }}
-      
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

@@ -6,8 +6,8 @@ coverImage: /images/space-cover.jpg
 url: https://spacecat.okj.ninja
 githubUrl: https://github.com/mxlle/space-cat-13
 js13k:
-    year: 2021
-    url: https://js13kgames.com/2021/games/space-playful-adventures-of-cat-emojis
+  year: 2021
+  url: https://js13kgames.com/2021/games/space-playful-adventures-of-cat-emojis
 ---
 
 - Play locally with up to 9 astronauts at one keyboard
