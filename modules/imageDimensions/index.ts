@@ -26,6 +26,7 @@ export default defineNuxtModule({
           recursive: true,
           withFileTypes: true,
         })
+          .catch(() => [])
           .then((listing) => listing.filter((entry) => entry.isFile()))
           .then((files) =>
             Promise.all(

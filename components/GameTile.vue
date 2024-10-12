@@ -12,7 +12,7 @@ const localeRoute = useLocaleRoute();
   <NuxtLink :to="localeRoute(`/game/${game.slug}`)">
     <UCard class="h-full">
       <div class="flex flex-col justify-items-center">
-        <img
+        <Image
           v-if="game.thumbnailImage"
           :src="game.thumbnailImage"
           :width="200"

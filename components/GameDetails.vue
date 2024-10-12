@@ -3,8 +3,7 @@ import type { Game } from "~/types/game";
 const props = defineProps<{ game: Game }>();
 
 const { t } = useI18n();
-
-const image = useImageDimensions(
+const image = computed(
   () => props.game.coverImage ?? props.game.thumbnailImage,
 );
 </script>
@@ -12,11 +11,11 @@ const image = useImageDimensions(
 <template>
   <div class="p-4 flex max-sm:flex-col gap-4 sm:max-h-[80vh]">
     <!-- Image -->
-    <img
-      v-if="image.src"
-      :src="image.src"
-      :width="image.width"
-      :height="image.height"
+    <Image
+      v-if="image"
+      :src="image"
+      :width="400"
+      :height="250"
       class="sm:max-w-1/2 w-auto max-h-[250px] flex-shrink max-sm:self-center self-start"
       alt=""
     />

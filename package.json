@@ -2,9 +2,9 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "nuxt build",
-    "dev": "nuxt dev",
-    "generate": "nuxt generate",
+    "build": "bun --bun nuxt build",
+    "dev": "bun --bun nuxt dev",
+    "generate": "bun --bun nuxt generate",
     "preview": "nuxt preview"
   },
   "dependencies": {
