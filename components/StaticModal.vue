@@ -15,18 +15,7 @@ const close = () => (isOpen.value = false);
 const finishClose = () =>
   props.closeLink ? navigateTo(props.closeLink) : emit("close");
 
-const scrollingEl = (() => {
-  const { scrollingElement, documentElement, body, compatMode } = document;
-  if (scrollingElement) return scrollingElement as HTMLElement;
-  return documentElement.scrollHeight > body.scrollHeight &&
-    compatMode.indexOf("CSS1") == 0
-    ? documentElement
-    : body;
-})();
-watch(
-  () => props.isOpen,
-  (isOpen) => (scrollingEl.style.overflow = isOpen ? "hidden" : ""),
-);
+useBodyScrollLock(() => props.isOpen);
 </script>
 
 <template>
