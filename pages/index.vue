@@ -5,10 +5,11 @@ const route = useRoute();
 const { locale } = useI18n();
 const localePath = useLocalePath();
 
-const { data, error } = useAsyncData(async () =>
+const { data, error } = await useAsyncData(route.path, async () =>
   queryContent().where({ _path: "/" }).locale(locale.value).findOne(),
 );
-whenever(error, showError, { immediate: true });
+
+whenever(error, (err) => showError(err), { immediate: true });
 whenever(data, (data) => useContentHead(data), { immediate: true });
 </script>
 <template>

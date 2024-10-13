@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { locale } = useI18n();
-const { data } = useFetch(() => `/api/${locale.value}/games`);
+const { data } = await useFetch(`/api/${locale.value}/games`);
+const localeRoute = useLocaleRoute();
 </script>
 
 <template>

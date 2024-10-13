@@ -3,12 +3,13 @@ import { join } from "pathe";
 import defu from "defu";
 import { resolveFallbacks } from "~/shared/resolveFallbacks";
 import { serverQueryContent } from "#content/server";
-import { objectOmit } from "@vueuse/shared";
-import { objectKeys } from "@antfu/utils";
+import { ParsedContent } from "@nuxt/content";
+import { Game } from "~/types/game";
+import { useI18nConfig } from "~/server/composables/useI18nConfig";
 
 export default defineEventHandler(async (event) => {
   const { locale, game: slug } = getRouterParams(event);
-  const { fallbackLocale } = event.context.i18n;
+  const { fallbackLocale } = await useI18nConfig();
 
   const locales = resolveFallbacks(fallbackLocale, locale);
 
@@ -16,7 +17,7 @@ export default defineEventHandler(async (event) => {
 
   const localeData = await Promise.all(
     locales.map((_locale) =>
-      serverQueryContent(event)
+      serverQueryContent<Game & ParsedContent>(event)
         .where({ _path, _locale })
         .findOne()
         .catch(() => undefined),
@@ -24,18 +25,21 @@ export default defineEventHandler(async (event) => {
   );
 
   if (!localeData.some(Boolean)) {
-    throw createError({ statusCode: 404, message: `Game '${slug}' not found` });
+    throw createError({
+      statusCode: 404,
+      message: `Game '${slug}' not found`,
+    });
   }
 
-  return omitInternal(defu(...localeData));
+  const game = localeData.reduce((a, b) => defu(a, b))!;
+  return omitInternal(game);
 });
 
 type ExcludeExtends<A, B> = A extends B ? never : A;
-function omitInternal<T>(
+function omitInternal<T extends Record<string, any>>(
   data: T,
-): Pick<T, ExcludeExtends<keyof T, `_${string}`>> {
-  return objectOmit(
-    data,
-    objectKeys(data).filter((k) => k[0] === "_"),
-  );
+): Pick<T, ExcludeExtends<keyof T, "_">> {
+  return Object.fromEntries(
+    Object.entries(data).filter(([k]) => !k.startsWith("_")),
+  ) as any;
 }
