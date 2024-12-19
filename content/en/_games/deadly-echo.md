@@ -8,6 +8,8 @@ githubUrl: https://github.com/mxlle/13k-death-by-emoji
 js13k:
   year: 2022
   url: https://js13kgames.com/2022/games/deadly-echo
+tags:
+  - single-player
 ---
 
 Listen to emojis and echo them with the buttons before the slots run out! Or practice without pressure.

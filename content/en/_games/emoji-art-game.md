@@ -4,6 +4,8 @@ slug: emoji-art-game
 url: https://emoji.okj.ninja
 thumbnailImage: /images/emoji-thumb.png
 githubUrl: https://github.com/mxlle/emoji-art-game
+tags:
+  - multiplayer-online
 ---
 
 In this cooperative multiplayer game, players choose "paintings", in the form of emojis, matching a specific theme to submit to art buyers.

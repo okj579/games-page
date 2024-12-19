@@ -8,6 +8,8 @@ githubUrl: https://github.com/mxlle/13k-triskaidekaphobia
 js13k:
   year: 2024
   url: https://js13kgames.com/2024/games/the-society-of-multiphobics
+tags:
+  - single-player
 ---
 
 ## Welcome to the Society of Multiphobics

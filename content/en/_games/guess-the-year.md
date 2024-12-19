@@ -8,6 +8,8 @@ githubUrl: https://github.com/mxlle/2023-13k-century
 js13k:
   year: 2023
   url: https://js13kgames.com/2023/games/guess-the-year
+tags:
+  - single-player
 ---
 
 Imagine Wordle, but for Math Geeks 🤓 (but don't worry if you're not)

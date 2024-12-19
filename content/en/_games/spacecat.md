@@ -8,6 +8,9 @@ githubUrl: https://github.com/mxlle/space-cat-13
 js13k:
   year: 2021
   url: https://js13kgames.com/2021/games/space-playful-adventures-of-cat-emojis
+tags:
+  - single-player
+  - multiplayer-local
 ---
 
 - Play locally with up to 9 astronauts at one keyboard

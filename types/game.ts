@@ -9,4 +9,5 @@ export interface Game {
   url?: string;
   githubUrl: string;
   js13k?: { year: number; url: string };
+  tags?: string[];
 }

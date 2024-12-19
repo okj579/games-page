@@ -1,6 +1,5 @@
 import { withLeadingSlash } from "ufo";
 import { join } from "pathe";
-import defu from "defu";
 import { resolveFallbacks } from "~/shared/resolveFallbacks";
 import { serverQueryContent } from "#content/server";
 import { ParsedContent } from "@nuxt/content";
@@ -31,7 +30,7 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  const game = localeData.reduce((a, b) => defu(a, b))!;
+  const game = localeData.reduce((a, b) => ({...b, ...a}))!;
   return omitInternal(game);
 });
 

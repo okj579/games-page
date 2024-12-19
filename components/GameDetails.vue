@@ -30,6 +30,16 @@ const image = computed(
 
       <!-- Badges -->
       <div class="flex flex-wrap gap-2">
+        <template v-for="tag in ['single-player', 'multiplayer-online', 'multiplayer-local']">
+          <UBadge
+            v-if="game.tags?.includes(tag)"
+            variant="subtle"
+            color="blue"
+          >
+            {{ t(`tags.${tag}`) }}
+          </UBadge>
+        </template>
+
         <UPopover v-if="game.js13k">
           <UBadge variant="subtle">{{ t("js13k.title") }}</UBadge>
           <template #panel>

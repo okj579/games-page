@@ -4,5 +4,10 @@
     "link": "(Entry page)",
     "title": "Js13kGames"
   },
-  "language": "Language"
+  "language": "Language",
+  "tags": {
+    "single-player": "Single player",
+    "multiplayer-online": "Multiplayer online",
+    "multiplayer-local": "Multiplayer local"
+  }
 }
