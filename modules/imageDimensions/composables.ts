@@ -3,7 +3,7 @@ import { withoutLeadingSlash } from "ufo";
 import type { ISize } from "image-size/dist/types/interface";
 import { objectPick } from "@vueuse/shared";
 
-interface ImageMeta extends ISize {
+interface ImageMeta extends Partial<ISize> {
   src: string;
   original?: Pick<ISize, "width" | "height">;
 }
@@ -13,21 +13,21 @@ interface Constraints {
 }
 
 export function useImageDimensions(
-  _src: MaybeRefOrGetter<string | undefined>,
+  _src: MaybeRefOrGetter<string>,
   _constraints?: MaybeRefOrGetter<Constraints>,
 ) {
-  return computed<ImageMeta>(() => {
-    const src = toValue<string | undefined>(_src);
-    const constraints = toValue<Constraints>(_constraints);
+  return computed((): ImageMeta => {
+    const src = toValue(_src);
+    const constraints = toValue(_constraints ?? {});
     const meta = manifest[withoutLeadingSlash(src)] as ISize | undefined;
     const original = meta && objectPick(meta, ["width", "height"]);
 
-    if (meta && constraints) {
-      if (meta.width > constraints.width) {
+    if (meta?.width && meta.height && constraints) {
+      if (constraints.width && meta.width > constraints.width) {
         meta.height *= constraints.width / meta.width;
         meta.width = constraints.width;
       }
-      if (meta.height > constraints.height) {
+      if (constraints.height && meta.height > constraints.height) {
         meta.width *= constraints.height / meta.height;
         meta.height = constraints.height;
       }

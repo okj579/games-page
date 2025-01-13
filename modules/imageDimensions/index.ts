@@ -14,9 +14,10 @@ const imageSize = promisify(_imageSize);
 const { resolve } = createResolver(import.meta.url);
 
 export default defineNuxtModule({
-  name: "imageDimensions",
-  parallel: true,
-  async setup(resolvedOptions, nuxt) {
+  meta: {
+    name: "imageDimensions",
+  },
+  setup(resolvedOptions, nuxt) {
     const publicDir = resolve(nuxt.options.srcDir, nuxt.options.dir.public);
 
     addTemplate({
