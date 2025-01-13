@@ -9,5 +9,6 @@
     "single-player": "Single player",
     "multiplayer-online": "Multiplayer online",
     "multiplayer-local": "Multiplayer local"
-  }
+  },
+  "backToHome": "Back"
 }
