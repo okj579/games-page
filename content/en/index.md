@@ -1,3 +1,8 @@
-# Games
+---
+navigation:
+title: Games
+---
+
+# mxlle Games
 
 :GamesList
