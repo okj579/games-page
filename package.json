@@ -16,10 +16,10 @@
     "@nuxt/ui": "^2.22.1",
     "@nuxtjs/i18n": "^10.0.0",
     "@vueuse/nuxt": "^13.5.0",
+    "image-size": "^2.0.2",
     "nuxt": "^3.17.7"
   },
   "devDependencies": {
-    "image-size": "^1.1.1",
     "prettier": "^3.6.2"
   }
 }
