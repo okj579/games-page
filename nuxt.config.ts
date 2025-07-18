@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     defaultLocale: "en",
     langDir: "locales",
     vueI18n: "i18n.config.ts",
+    restructureDir: false,
     experimental: {
       localeDetector: "./server/localeDetector.ts",
     },
