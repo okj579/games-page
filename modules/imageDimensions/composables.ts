@@ -1,6 +1,6 @@
 import manifest from "#build/publicAssets.manifest.json";
 import { withoutLeadingSlash } from "ufo";
-import type { ISize } from "image-size/dist/types/interface";
+import type { ISize } from "image-size/types/interface";
 import { objectPick } from "@vueuse/shared";
 
 interface ImageMeta extends Partial<ISize> {

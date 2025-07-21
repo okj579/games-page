@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { ParsedContent } from "@nuxt/content";
-import type { Game } from "~/types/game";
+import type { Game } from "~~/types/game";
 
 const route = useRoute();
 const { locale } = useI18n();

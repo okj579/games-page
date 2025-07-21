@@ -4,12 +4,9 @@ import {
   defineNuxtModule,
   createResolver,
 } from "@nuxt/kit";
-import { imageSize as _imageSize } from "image-size";
 import { readdir } from "node:fs/promises";
 import { relative } from "pathe";
-import { promisify } from "node:util";
-
-const imageSize = promisify(_imageSize);
+import { imageSizeFromFile } from "image-size/fromFile";
 
 const { resolve } = createResolver(import.meta.url);
 
@@ -34,7 +31,7 @@ export default defineNuxtModule({
               files.map(async (file) => {
                 const absPath = resolve(file.parentPath, file.name);
                 const relPath = relative(publicDir, absPath);
-                return [relPath, await imageSize(absPath)];
+                return [relPath, await imageSizeFromFile(absPath)];
               }),
             ),
           )
