@@ -1,5 +1,3 @@
-import vueI18nConfig from "~/i18n.config";
+import vueI18nConfig from "~~/i18n/i18n.config";
 
-export const useI18nConfig = cachedFunction(async function () {
-  return vueI18nConfig();
-});
+export const useI18nConfig = defineCachedFunction(vueI18nConfig);

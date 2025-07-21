@@ -1,10 +1,10 @@
 import type { ParsedContent } from "@nuxt/content";
-import type { Game } from "~/types/game";
-import { resolveFallbacks } from "~/shared/resolveFallbacks";
+import type { Game } from "~~/types/game";
+import { resolveFallbacks } from "~~/shared/resolveFallbacks";
 import { serverQueryContent } from "#content/server";
 import { objectPick } from "@vueuse/shared";
 import { Simplify } from "type-fest";
-import { useI18nConfig } from "~/server/composables/useI18nConfig";
+import { useI18nConfig } from "~~/server/composables/useI18nConfig";
 
 const pickKeys = (["slug", "title", "thumbnailImage"] as const).slice();
 

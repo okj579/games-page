@@ -1,4 +1,4 @@
-import { resolveFallbacks } from "~/shared/resolveFallbacks";
+import { resolveFallbacks } from "~~/shared/resolveFallbacks";
 
 export function useFallbackLocales() {
   const { locale, fallbackLocale } = useI18n();
