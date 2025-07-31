@@ -1,13 +1,11 @@
 <script setup lang="ts">
+import { findPageChildren } from "@nuxt/content/utils";
+
 const { locale } = useI18n();
 const { data } = useAsyncData(
-  async () => {
-    const nav = await fetchContentNavigation(
-      queryContent("/").locale(locale.value).sort({ title: 1 }),
-    );
-    return nav.sort((a, b) => a._path.localeCompare(b._path));
-  },
-  { watch: [locale] },
+  () => `Footer-${locale.value}`,
+  () => queryCollectionNavigation("content"),
+  { transform: (nav) => findPageChildren(nav, `/${locale.value}`) },
 );
 </script>
 <template>
@@ -18,11 +16,11 @@ const { data } = useAsyncData(
     >
       <li
         v-for="item in data"
-        :key="item._path"
+        :key="item.path"
         class="contents before:content-['•'] first:before:content-none before:mx-2 before:text-gray-500"
       >
         <NuxtLinkLocale
-          :to="item._path"
+          :to="item.path"
           class="font-thin text-md hover:underline decoration-black/50 dark:decoration-white/50"
         >
           {{ item.title }}

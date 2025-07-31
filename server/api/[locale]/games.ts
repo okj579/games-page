@@ -1,38 +1,31 @@
-import type { ParsedContent } from "@nuxt/content";
-import type { Game } from "~~/types/game";
 import { resolveFallbacks } from "~~/shared/resolveFallbacks";
-import { serverQueryContent } from "#content/server";
-import { objectPick } from "@vueuse/shared";
-import { Simplify } from "type-fest";
 import { useI18nConfig } from "~~/server/composables/useI18nConfig";
+import { defu } from "defu";
 
-const pickKeys = (["slug", "title", "thumbnailImage"] as const).slice();
-
-type Keys = (typeof pickKeys)[number];
-type GameListItem = Simplify<Pick<Game, Keys>>;
+const group = <T>(
+  list: T[],
+  groupBy: (item: T) => any,
+  sortBy: (item: T) => number,
+) =>
+  Map.groupBy(list, groupBy)
+    .values()
+    .map((group) => group.toSorted((a, b) => sortBy(a) - sortBy(b)))
+    .toArray();
 
 export default defineEventHandler(async (event) => {
   const { fallbackLocale } = await useI18nConfig();
+  const locale = getRouterParam(event, "locale")!;
 
-  const { locale } = getRouterParams(event);
+  const locales = resolveFallbacks(fallbackLocale, locale);
 
-  const queries = resolveFallbacks(fallbackLocale, locale).map((locale) =>
-    serverQueryContent<ParsedContent & Game>(event, "_games")
-      .locale(locale)
-      .find()
-      .then(
-        (data) =>
-          new Map(
-            data.map((game) => [game._path!, objectPick(game, pickKeys)]),
-          ),
-      ),
-  );
-  const data = await Promise.all(queries);
-  const allKeys = [...new Set(data.flatMap((pages) => [...pages.keys()]))];
-  return allKeys.map((path) =>
-    data.reduce(
-      (page, data) => ({ ...data.get(path), ...page }),
-      <GameListItem>{},
-    ),
-  );
+  const data = await queryCollection(event, "games")
+    .where("locale", "IN", locales)
+    .select("slug", "locale", "title", "thumbnailImage")
+    .all();
+
+  return group(
+    data,
+    (it) => it.slug,
+    (it) => locales.indexOf(it.locale),
+  ).map((group) => group.reduce(defu));
 });

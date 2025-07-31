@@ -1,16 +1,13 @@
 <script setup lang="ts">
-import type { ParsedContent } from "@nuxt/content";
-import type { Game } from "~~/types/game";
-
 const route = useRoute();
 const { locale } = useI18n();
 
-const { data, error } = await useFetch<ParsedContent & Game>(
-  `/api/${locale.value}/game/${route.params.game}`,
+const { data, error } = await useFetch(
+  () => `/api/${locale.value}/game/${route.params.game}`,
 );
 
-whenever(error, (err) => showError(err), { immediate: true });
-whenever(data, (data) => useContentHead(data), { immediate: true });
+whenever(error, showError, { immediate: true });
+whenever(data, (data) => useHead(data.seo), { immediate: true });
 </script>
 
 <template>

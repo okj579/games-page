@@ -3,5 +3,6 @@
     <AppHeader />
     <NuxtPage />
     <AppFooter />
+    <UModals />
   </div>
 </template>

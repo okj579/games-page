@@ -20,8 +20,11 @@ export default defineNuxtConfig({
   },
 
   content: {
-    locales: ["en", "de"],
-    markdown: {
+    experimental: { sqliteConnector: "native" },
+    build: {
+      transformers: ["~~/shared/gameContentTransformer.ts"],
+    },
+    renderer: {
       anchorLinks: false,
     },
   },
@@ -35,5 +38,5 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: "2024-10-03",
+  compatibilityDate: "2025-07-07",
 });

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import type { Game } from "~~/types/game";
-const props = defineProps<{ game: Game }>();
+import type { GamesCollectionItem } from "@nuxt/content";
+const props = defineProps<{ game: GamesCollectionItem }>();
 
 const { t } = useI18n();
 const image = computed(

@@ -1,5 +1,5 @@
 ---
-_draft: true
+draft: true
 ---
 
 # About

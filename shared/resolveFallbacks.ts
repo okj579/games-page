@@ -9,7 +9,10 @@ export function resolveFallbacks(
     .filter((val, i, arr) => arr.indexOf(val) === i);
 }
 
-function _resolveFallbacks(fallbacks: FallbackLocales<string>, locale: string) {
+function _resolveFallbacks(
+  fallbacks: FallbackLocales<string>,
+  locale: string,
+): string[] {
   if (!fallbacks) return [];
   if (typeof fallbacks === "string") return [fallbacks];
   if (Array.isArray(fallbacks)) return fallbacks;
@@ -17,8 +20,8 @@ function _resolveFallbacks(fallbacks: FallbackLocales<string>, locale: string) {
   // Explicit fallback
   if (locale in fallbacks) {
     const found = fallbacks[locale];
-    const last = found[found.length - 1];
-    return [...found, ..._resolveFallbacks(fallbacks, last)];
+    const last = found?.[found.length - 1];
+    if (last) return [...found, ..._resolveFallbacks(fallbacks, last)];
   }
 
   // Implicit fallback

@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import type { Game } from "~~/types/game";
+import type { GamesCollectionItem } from "@nuxt/content";
 
 const props = defineProps<{
-  game: Game;
+  game: GamesCollectionItem;
 }>();
 const game = toReactive(toRef(props, "game"));
 const localeRoute = useLocaleRoute();

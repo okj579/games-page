@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { GamesList } from "#components";
-
 const route = useRoute();
 const { locale } = useI18n();
 const localePath = useLocalePath();
 
-const { data, error } = await useAsyncData(route.path, async () =>
-  queryContent().where({ _path: "/" }).locale(locale.value).findOne(),
+const { data, error } = await useAsyncData(
+  () => `/${locale.value}`,
+  () => queryCollection("content").path(`/${locale.value}`).first(),
 );
 
-whenever(error, (err) => showError(err), { immediate: true });
-whenever(data, (data) => useContentHead(data), { immediate: true });
+whenever(error, showError, { immediate: true });
+useHead(() => data.value?.seo);
 </script>
 <template>
   <main>
     <UContainer :ui="{ constrained: 'max-w-5xl' }">
-      <ContentRenderer v-if="data" :value="data" :components="{ GamesList }">
+      <ContentRenderer v-if="data" :value="data">
         <template #empty><GamesList /></template>
       </ContentRenderer>
 
