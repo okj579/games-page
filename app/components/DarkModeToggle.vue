@@ -9,11 +9,11 @@ const toggleColorMode = () => {
   <UButton
     square
     variant="ghost"
-    color="gray"
+    color="neutral"
     aria-label="Theme"
     @click="toggleColorMode"
   >
-    <UIcon name="i-ph-sun" class="w-5 h-5 flex-shrink-0 dark:hidden" />
-    <UIcon name="i-ph-moon" class="w-5 h-5 flex-shrink-0 hidden dark:block" />
+    <UIcon name="i-ph-sun" class="w-5 h-5 shrink-0 dark:hidden" />
+    <UIcon name="i-ph-moon" class="w-5 h-5 shrink-0 hidden dark:block" />
   </UButton>
 </template>

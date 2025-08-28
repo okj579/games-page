@@ -5,7 +5,7 @@ const localeRoute = useLocaleRoute();
 </script>
 
 <template>
-  <UContainer :ui="{ constrained: 'max-w-5xl' }">
+  <UContainer class="max-w-5xl">
     <div class="grid justify-center justify-items-center gap-4 my-4">
       <NuxtLink
         v-for="game in data"
@@ -13,7 +13,7 @@ const localeRoute = useLocaleRoute();
         :to="localeRoute(`/game/${game.slug}`)"
         class="max-w-52"
       >
-        <UCard class="h-full">
+        <UCard class="h-full bg-elevated">
           <div class="flex flex-col justify-items-center">
             <Image
               v-if="game.thumbnailImage"

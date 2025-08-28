@@ -13,7 +13,7 @@ useHead(() => data.value?.seo);
 </script>
 <template>
   <main>
-    <UContainer :ui="{ constrained: 'max-w-5xl' }">
+    <UContainer class="max-w-5xl">
       <ContentRenderer v-if="data" :value="data">
         <template #empty><GamesList /></template>
       </ContentRenderer>

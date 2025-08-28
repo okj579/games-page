@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import type { GamesCollectionItem } from "@nuxt/content";
+
 const props = defineProps<{ game: GamesCollectionItem }>();
 
 const { t } = useI18n();
@@ -16,14 +17,14 @@ const image = computed(
       :src="image"
       :width="400"
       :height="250"
-      class="sm:max-w-1/2 w-auto max-h-[250px] flex-shrink max-sm:self-center self-start"
+      class="sm:max-w-1/2 w-auto max-h-[250px] shrink max-sm:self-center self-start"
       alt=""
     />
     <ImagePlaceholder v-else class="w-52 max-sm:self-center" />
 
     <!-- Main -->
     <div
-      class="sm:w-1/2 flex-grow flex flex-col items-start min-h-full gap-4 self-stretch"
+      class="sm:w-1/2 grow flex flex-col items-start min-h-full gap-4 self-stretch"
     >
       <div class="self-stretch">
         <!-- Play button -->
@@ -41,15 +42,15 @@ const image = computed(
 
       <!-- Badges -->
       <div class="flex flex-wrap gap-2">
-        <UBadge v-for="tag in game.tags" variant="subtle" color="blue">
+        <UBadge v-for="tag in game.tags" variant="subtle" color="info">
           {{ t(`tags.${tag}`) }}
         </UBadge>
 
-        <UPopover v-if="game.js13k" mode="hover" :ui="{ trigger: 'align-top' }">
+        <UPopover v-if="game.js13k" mode="hover">
           <UBadge variant="subtle">
             {{ t("js13k.title") }}
           </UBadge>
-          <template #panel>
+          <template #content>
             <div class="p-4 max-w-96">
               {{ t("js13k.descr", game.js13k) }}
               <ULink
@@ -65,8 +66,9 @@ const image = computed(
 
         <UButton
           v-if="game.githubUrl"
-          size="2xs"
-          color="gray"
+          size="xs"
+          color="neutral"
+          variant="subtle"
           :to="game.githubUrl"
           target="_blank"
           class="text-xs"

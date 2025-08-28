@@ -10,13 +10,13 @@ const localeOptions = computed(() =>
 );
 </script>
 <template>
-  <UDropdown v-if="localeOptions.length > 1" :items="[localeOptions]">
+  <UDropdownMenu v-if="localeOptions.length > 1" :items="[localeOptions]">
     <UButton
       icon="i-ph-globe-simple"
       square
       variant="ghost"
-      color="gray"
+      color="neutral"
       :aria-label="t('language')"
     />
-  </UDropdown>
+  </UDropdownMenu>
 </template>

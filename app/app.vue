@@ -1,8 +1,7 @@
 <template>
-  <div>
+  <UApp>
     <AppHeader />
     <NuxtPage />
     <AppFooter />
-    <UModals />
-  </div>
+  </UApp>
 </template>

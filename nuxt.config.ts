@@ -8,6 +8,8 @@ export default defineNuxtConfig({
     "@nuxt/image",
   ],
 
+  css: ["~/assets/css/main.css"],
+
   i18n: {
     locales: [
       { code: "en", language: "en-US", file: "en.yaml", name: "English" },

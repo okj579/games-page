@@ -11,7 +11,7 @@ const emit = defineEmits(["close"]);
 const isOpen = ref(props.isOpen);
 syncRefs(toRef(props, "isOpen"), isOpen);
 
-const close = () => (isOpen.value = false);
+const close = () => void (isOpen.value = false);
 const finishClose = () =>
   props.closeLink ? navigateTo(props.closeLink) : emit("close");
 
@@ -43,13 +43,13 @@ useBodyScrollLock(() => props.isOpen);
           enter-from="opacity-0 translate-y-full"
           leave="transition duration-300 translate"
           leave-to="opacity-0 translate-y-full"
-          class="w-full sm:max-w-5xl min-h-[100vh] flex flex-col justify-center items-center p-4 sm:p-8 gap-4 relative mx-auto"
+          class="w-full sm:max-w-5xl min-h-screen flex flex-col justify-center items-center p-4 sm:p-8 gap-4 relative mx-auto"
         >
           <UButton
             icon="i-ph-x"
             variant="ghost"
             size="xl"
-            color="white"
+            color="neutral"
             class="cursor-pointer rounded-full self-end"
             :to="closeLink"
             @click.prevent="close"
