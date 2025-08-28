@@ -10,8 +10,8 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      { code: "en", language: "en-US", file: "en.json", name: "English" },
-      { code: "de", language: "de-DE", file: "de.json", name: "Deutsch" },
+      { code: "en", language: "en-US", file: "en.yaml", name: "English" },
+      { code: "de", language: "de-DE", file: "de.yaml", name: "Deutsch" },
     ],
     defaultLocale: "en",
     experimental: {
@@ -35,6 +35,24 @@ export default defineNuxtConfig({
     },
     clientBundle: {
       scan: true,
+    },
+  },
+
+  routeRules: {
+    "/api/**": { prerender: true },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/de"],
+    },
+  },
+
+  vite: {
+    define: {
+      // Disable @nuxt/content client-side database
+      "window.WebAssembly": false,
     },
   },
 

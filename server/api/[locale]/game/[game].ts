@@ -1,5 +1,13 @@
 import { resolveFallbacks } from "~~/shared/resolveFallbacks";
 import { useI18nConfig } from "~~/server/composables/useI18nConfig";
+import { createDefu } from "defu";
+
+const merge = createDefu((obj, key, value) => {
+  if (key === "body") {
+    obj[key] = value;
+    return true;
+  }
+});
 
 export default defineEventHandler(async (event) => {
   const { game: slug, locale } = getRouterParams(event);
@@ -19,7 +27,6 @@ export default defineEventHandler(async (event) => {
     });
   }
 
-  return data
-    .sort((a, b) => locales.indexOf(a.locale) - locales.indexOf(b.locale))
-    .reduce((prev, val) => ({ ...val, ...prev }));
+  data.sort((a, b) => locales.indexOf(a.locale) - locales.indexOf(b.locale));
+  return data.reduce(merge);
 });
