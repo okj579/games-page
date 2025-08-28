@@ -7,17 +7,20 @@
     "generate": "nuxt prepare && nuxt generate",
     "preview": "nuxt preview"
   },
+  "enginges": {
+    "node": "^22.14"
+  },
   "dependencies": {
     "@headlessui/vue": "^1.7.23",
     "@iconify-json/mdi": "^1.2.3",
     "@iconify-json/ph": "^1.2.2",
     "@nuxt/content": "^2.13.4",
-    "@nuxt/image": "^1.10.0",
+    "@nuxt/image": "^1.11.0",
     "@nuxt/ui": "^2.22.1",
-    "@nuxtjs/i18n": "^10.0.0",
-    "@vueuse/nuxt": "^13.5.0",
+    "@nuxtjs/i18n": "^10.0.3",
+    "@vueuse/nuxt": "^13.6.0",
     "image-size": "^2.0.2",
-    "nuxt": "^4.0.1"
+    "nuxt": "^4.0.2"
   },
   "devDependencies": {
     "prettier": "^3.6.2"

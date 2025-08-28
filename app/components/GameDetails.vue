@@ -25,25 +25,30 @@ const image = computed(
     <div
       class="sm:w-1/2 flex-grow flex flex-col items-start min-h-full gap-4 self-stretch"
     >
-      <!-- Title -->
-      <h2 class="text-3xl font-thin">{{ game.title }}</h2>
+      <div class="self-stretch">
+        <!-- Play button -->
+        <UButton
+          leading-icon="i-ph-play"
+          :to="game.url"
+          target="_blank"
+          class="float-end ms-5 h-9"
+        >
+          {{ t("playButton") }}
+        </UButton>
+        <!-- Title -->
+        <h2 class="text-3xl font-thin">{{ game.title }}</h2>
+      </div>
 
       <!-- Badges -->
       <div class="flex flex-wrap gap-2">
-        <template
-          v-for="tag in [
-            'single-player',
-            'multiplayer-online',
-            'multiplayer-local',
-          ]"
-        >
-          <UBadge v-if="game.tags?.includes(tag)" variant="subtle" color="blue">
-            {{ t(`tags.${tag}`) }}
-          </UBadge>
-        </template>
+        <UBadge v-for="tag in game.tags" variant="subtle" color="blue">
+          {{ t(`tags.${tag}`) }}
+        </UBadge>
 
-        <UPopover v-if="game.js13k">
-          <UBadge variant="subtle">{{ t("js13k.title") }}</UBadge>
+        <UPopover v-if="game.js13k" mode="hover" :ui="{ trigger: 'align-top' }">
+          <UBadge variant="subtle">
+            {{ t("js13k.title") }}
+          </UBadge>
           <template #panel>
             <div class="p-4 max-w-96">
               {{ t("js13k.descr", game.js13k) }}
@@ -64,9 +69,10 @@ const image = computed(
           color="gray"
           :to="game.githubUrl"
           target="_blank"
+          class="text-xs"
+          leading-icon="i-mdi-github"
         >
-          <UIcon name="i-mdi-github" class="me-1" />
-          Source
+          {{ t("sourceButton") }}
         </UButton>
       </div>
 
@@ -78,16 +84,6 @@ const image = computed(
           <template #empty></template>
         </ContentRenderer>
       </div>
-
-      <!-- Play button -->
-      <UButton
-        leading-icon="i-ph-play"
-        :to="game.url"
-        target="_blank"
-        class="self-end justify-self-end"
-      >
-        Play
-      </UButton>
     </div>
   </div>
 </template>

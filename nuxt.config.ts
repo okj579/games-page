@@ -10,8 +10,8 @@ export default defineNuxtConfig({
 
   i18n: {
     locales: [
-      { code: "en", language: "en-US", file: "en.json", name: "English" },
-      { code: "de", language: "de-DE", file: "de.json", name: "Deutsch" },
+      { code: "en", language: "en-US", file: "en.yaml", name: "English" },
+      { code: "de", language: "de-DE", file: "de.yaml", name: "Deutsch" },
     ],
     defaultLocale: "en",
     experimental: {
@@ -35,5 +35,16 @@ export default defineNuxtConfig({
     },
   },
 
-  compatibilityDate: "2024-10-03",
+  routeRules: {
+    "/api/**": { prerender: true },
+  },
+
+  nitro: {
+    prerender: {
+      crawlLinks: true,
+      routes: ["/", "/de"],
+    },
+  },
+
+  compatibilityDate: "2025-07-07",
 });
