@@ -1,6 +1,9 @@
 ---
 title: Empire of Sugar
 slug: empire-of-sugar
+thumbnailImage: /images/empire-of-sugar-thumb.png
+coverImage: /images/empire-of-sugar-cover.png
+url: https://mxlle.github.io/13k-2026-unicorns-and-rainbows/
 githubUrl: https://github.com/js13kGames/empire-of-sugar
 js13k:
   year: 2026
