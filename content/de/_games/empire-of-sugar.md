@@ -10,8 +10,8 @@ _Ein rundenbasiertes Spiel aus Licht und Zucker auf einem Spielfeld, das unter W
 
 - **Wird im Spiel erklärt.** Leg einfach los; die Hinweise unten helfen dir, falls du nicht weiterkommst.
 - **Sieben Levels**, vom Zwei-Züge-Tutorial bis zu 25×25. Am besten der Reihe nach gespielt, aber keines ist gesperrt.
-- **Jedes Spielfeld bewertet dich als % meiner eigenen Bestleistung.** Die sieben sind für alle gleich, und 100 % sind kein Limit.
-- **Ab dem fünften Spielfeld: ein Rivale** – ein dunkles Einhorn aus der gegenüberliegenden Ecke.
+- **Jedes Level bewertet dich als % meiner eigenen Bestleistung.** Die sieben sind für alle gleich, und 100 % sind kein Limit.
+- **Ab dem fünften Level: ein Rivale** – ein dunkles Einhorn aus der gegenüberliegenden Ecke.
 
 ## 🤖 Zum Einsatz von KI
 
